@@ -1,0 +1,103 @@
+<div class="bg-black text-white py-2">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div id="carouselComingSoon" class="carousel slide h-100 pt-2">
+                    <div class="carousel-inner h-100">
+                        <div class="carousel-item h-100 position-relative" [class]="{active: first}"
+                            *ngFor="let movie of comingSoon; let first = first;">
+                            <div class="position-relative" style="padding-top: 60%">
+                                <img class="carousel-img" [src]='getBackdropL(movie.backdrop_path)' alt="">
+                            </div>
+                            <div class="img-shadow position-absolute bottom-0 start-0 end-0 row">
+                                <div class="col-3 p-4 position-relative">
+                                    <app-add-movie [movie]="movie" [resize]="5"></app-add-movie>
+                                </div>
+                                <div class="col-9 align-self-end pb-3">
+                                    <a class="my-auto ms-4 text-decoration-none text-white"
+                                        [routerLink]="['/movie/' + movie.id]">
+                                        <div class="d-flex">
+                                            <svg class="my-auto" width="72" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24" fill="#ffffff" role="presentation">
+                                                <path
+                                                    d="M10.803 15.932l4.688-3.513a.498.498 0 0 0 0-.803l-4.688-3.514a.502.502 0 0 0-.803.402v7.026c0 .412.472.653.803.402z">
+                                                </path>
+                                                <path
+                                                    d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zm0-1c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z">
+                                                </path>
+                                            </svg>
+                                            <div class="my-auto ms-4">
+                                                <h3>{{movie.title}}</h3>
+                                                <p class="mb-0">{{movie.release_date | date}}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-gray-transparent position-absolute px-1 py-3" style="top: 30%" type="button"
+                        data-bs-target="#carouselComingSoon" data-bs-slide="prev"
+                        onclick="new bootstrap.Carousel(document.querySelector('#carouselComingSoonVertical')).prev()">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="btn btn-gray-transparent position-absolute px-1 py-3" style="top: 30%; right: 0;"
+                        type="button" data-bs-target="#carouselComingSoon" data-bs-slide="next"
+                        onclick="new bootstrap.Carousel(document.querySelector('#carouselComingSoonVertical')).next()">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 hide-md">
+                <h4 class="font-lemon">Coming Soon</h4>
+                <div id="carouselComingSoonVertical" class="carousel slide my-3">
+                    <div class="carousel-inner">
+                        <div class="vertical carousel-item" [class]="{active: first}"
+                            *ngFor="let slide of comingSoonVertical; let first = first;">
+                            <div class="row p-1 my-2" *ngFor="let movie of slide">
+                                <img class="col-3" [src]='getPoster(movie.poster_path)' alt="">
+                                <div class="col-8">
+                                    <svg class="my-auto" width="36" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" fill="#ffffff" role="presentation">
+                                        <path
+                                            d="M10.803 15.932l4.688-3.513a.498.498 0 0 0 0-.803l-4.688-3.514a.502.502 0 0 0-.803.402v7.026c0 .412.472.653.803.402z">
+                                        </path>
+                                        <path
+                                            d="M12 24C5.373 24 0 18.627 0 12S5.373 0 12 0s12 5.373 12 12-5.373 12-12 12zm0-1c6.075 0 11-4.925 11-11S18.075 1 12 1 1 5.925 1 12s4.925 11 11 11z">
+                                        </path>
+                                    </svg>
+                                    <h6 class="mt-3">{{movie.title}}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4>Browse Trailers</h4>
+            </div>
+        </div>
+
+        <div class="my-5">
+            <div class="d-flex">
+                <div class="bg-lemon rounded-2 px-1"></div>
+                <h4 class="m-1 ps-1">From your watchlist</h4>
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="my-auto" viewBox="0 0 24 24"
+                    fill="currentColor" role="presentation">
+                    <path
+                        d="M5.622.631A2.153 2.153 0 0 0 5 2.147c0 .568.224 1.113.622 1.515l8.249 8.34-8.25 8.34a2.16 2.16 0 0 0-.548 2.07c.196.74.768 1.317 1.499 1.515a2.104 2.104 0 0 0 2.048-.555l9.758-9.866a2.153 2.153 0 0 0 0-3.03L8.62.61C7.812-.207 6.45-.207 5.622.63z">
+                    </path>
+                </svg>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3" *ngFor="let movie of watchlist">
+                    <div>Title: {{movie.title}}</div>
+                    <img class="w-100" [src]='"http://image.tmdb.org/t/p/w500/" + movie.poster_path' alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

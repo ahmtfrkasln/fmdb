@@ -1,0 +1,13 @@
+.svg-transparent{
+    color: rgba(0, 0, 0, 0.263);
+    transition: color .5s;
+}
+
+.svg-transparent:hover{
+    color: rgba(65, 65, 65, 0.263);
+}
+
+.font-lemon:hover {
+    color: var(--lemon);
+    opacity: .7;
+}

@@ -1,0 +1,39 @@
+.seperator-vertical{
+    margin-left: .5rem;
+    margin-right: .5rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    border-right: solid #ffffff4f 1px;
+}
+
+.seperator-horizontal{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: solid #ffffff4f 1px;
+}
+
+.seperator-dot{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    height: 0;
+    width: 0;
+    border: solid #ffffff 1px;
+}
+
+.heading-rater{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: .9rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.video-container > button{
+    opacity: 0;
+    transition: opacity .5s;
+}
+
+.video-container:hover > button{
+    opacity: 1;
+}
